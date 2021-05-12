@@ -25,9 +25,16 @@
     <br>
     <h1>Zumba con Nancy</h1>
     <br>
-    {% for elemento in  Lista_clientes %}
-          <p>{{elemento}}</p>
-    {% endfor %}
+    <ul>
+      {%for e in Lista_clientes%}
+      <li>
+          {{e.name}}
+          {{e.fecha_inicio}}
+          {{e.fecha_fin}}
+          {{e.Tipo_plan}}
+      </li>
+      {%endfor%}
+  </ul>
     <!-- Optional JavaScript; choose one of the two! -->
     <!--<div class="table-responsive">
       <table class="table table-dark table-striped">

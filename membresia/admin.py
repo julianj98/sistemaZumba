@@ -6,9 +6,10 @@ from .models import Cliente, Planes
 class clienteAdmin(admin.ModelAdmin):
     list_display = (
         'name',
+        'last_name',
+        'Tipo_plan',
         'fecha_inicio',
         'fecha_fin',
-        'Tipo_plan',
         'state',
     )
     search_fields = ('name',)

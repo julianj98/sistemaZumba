@@ -15,10 +15,11 @@ class Planes(models.Model):
         return  self.description 
 
 class Cliente(models.Model):
-    name= models.CharField(max_length=200,verbose_name="Nombre")
+    name= models.CharField(max_length=60,verbose_name="Nombre")
+    last_name= models.CharField(max_length=60,verbose_name="Apellido")
+    Tipo_plan = models.ForeignKey(Planes, on_delete=models.CASCADE)
     fecha_inicio=models.DateField(auto_now=False, verbose_name="Fecha de inicio")
     fecha_fin=models.DateField(auto_now=False, verbose_name="Fecha de finalizacion")
-    Tipo_plan = models.ForeignKey(Planes, on_delete=models.CASCADE)
     state=models.BooleanField('Activo',default=True)
     class Meta:
         verbose_name= "Cliente"
