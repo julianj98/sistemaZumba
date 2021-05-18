@@ -5,11 +5,14 @@ from .models import Cliente
 
 # Create your views here.
 
+class inicioView(TemplateView):
+    template_name = "inicio.html"
+
+
 class pruebaView(ListView):
     template_name='home.html'
     model= Cliente
     context_object_name="Lista_clientes"
-
 
 class ClienteDetailView(DetailView):
     model = Cliente
