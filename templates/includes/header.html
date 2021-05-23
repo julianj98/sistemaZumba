@@ -3,7 +3,10 @@
       <ul class="dropdown menu" data-dropdown-menu>
         <li class="menu-text">Zumba con Nancy</li>
         <li>
-          <a href="#">Mostrar Clientes</a>
+          <a href="{% url 'clientes_app:inicio'%}">Inicio</a>
+        </li>
+        <li>
+          <a href="{% url 'clientes_app:clientes_all'%}">Mostrar Clientes</a>
         </li>
         <li><a href="#">Planes</a></li>
         <li><a href="#">Administrar</a></li>

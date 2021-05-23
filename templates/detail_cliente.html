@@ -1,11 +1,21 @@
 
+{% extends 'base.html' %} {% block content %} 
+{% include 'includes/header.html'%}
 
-<h1>Zumba Nancy</h1>
-{{cliente}}
+<div class="container text-align: center">
+  <h1 class="cell " style="text-align: center;">Detalles del cliente</h1>
+  {{cliente}}
 
-<h3>Todos los  datos</h3>
-<p>{{cliente.name}}</p>
-<p>{{cliente.fecha_inicio}}</p>
-<p>{{cliente.fecha_fin}}</p>
-<p>{{cliente.Tipo_plan}}</p>
-<p>{{cliente.state}}</p>
+  <h2 class="cell">Todos los datos</h2>
+  <ul class="cell">
+    <li>Nombre: {{cliente.name}}</li>
+    <li>Apellido: {{cliente.last_name}}</li>
+    <li>Tipo de plan: {{cliente.Tipo_plan}}</li>
+    <li>Cantidad de clases disponibles: {{cliente.Tipo_plan.Cantidad_Clases}}</li>
+    <li>Fecha de Inicio: {{cliente.fecha_inicio}}</li>
+    <li>Fechade fin:{{cliente.fecha_fin}}</li>
+    <li>Estado: {{cliente.state}}</li>
+  </ul>
+
+</div>
+{% endblock content %}

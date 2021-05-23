@@ -10,9 +10,18 @@ class inicioView(TemplateView):
 
 
 class pruebaView(ListView):
-    template_name='home.html'
+    template_name='clientes_all.html'
     model= Cliente
+    paginate_by = 6
     context_object_name="Lista_clientes"
+    
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '')
+        lista = Cliente.objects.filter(
+        name__icontains=palabra_clave
+    )
+        return lista
+
 
 class ClienteDetailView(DetailView):
     model = Cliente
