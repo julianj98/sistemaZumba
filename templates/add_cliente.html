@@ -1,7 +1,56 @@
-<h3>Añadir un cliente</h3>
+{% extends 'base.html' %}
 
+{% block title %}
+    Registrar empleado
+{% endblock title %}
+    
 
-<form method="POST">{% csrf_token %} 
-    {{form.as_p}}
-    <button type="submit">Agregar</button>
-</form>
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">registrar personas</h1>
+            <form class="cell grid-x grid-margin-x" method="POST"> {% csrf_token %}
+                <div class="medium-6 cell">
+                    <label>Nombres:
+                        {{form.name}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Apellidos:
+                        {{form.last_name}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Tipo de plan:
+                        {{form.Tipo_plan}}
+                    </label>
+                </div>
+<!--                <div class="medium-6 cell">
+                        <label>Cantidad de clases:
+                            <input type="text" disabled>{{form.Tipo_plan.Cantidad_Clases}}
+                        </label>
+                    </div>-->
+                <div class="medium-6 cell">
+                    <label>Fecha de inicio:
+                      <input type="date" {{form.fecha_inicio}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Fecha de fin:
+                        <input type="date" {{form.fecha_fin}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Estado:
+                        {{form.state}}
+                    </label>
+                </div>
+                <div class="medium-12 cell">
+                    <button type="submit" class="success button">Guardar</button>
+                </div>
+            </form>    
+        </div>
+    </div>
+{% endblock content %}
+    

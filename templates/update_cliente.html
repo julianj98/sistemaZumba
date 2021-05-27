@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editar Cliente
+{% endblock title %}
+
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1>Modificar cliente</h1>
+            </div>
+            <div class="cell"> 
+                <form class="grid-x grid-margin-x" method="POST">{% csrf_token %} 
+                    <div class="cell large-6">
+                        <label>Nombres:
+                            {{form.name}}
+                        </label>
+                      </div>
+                      <div class="cell large-6">
+                        <label>Apellidos:
+                            {{form.last_name}}
+                        </label>
+                      </div>
+                      <div class="cell large-6">
+                        <label>Tipo de plan:
+                            {{form.Tipo_plan}}
+                        </label>
+                      </div>
+                        <label>Fecha de inicio:
+                          <input type="date" {{form.fecha_inicio}}
+                        </label>
+                      </div>
+                      <div class="medium-6 cell">
+                        <label>Fecha de fin:
+                          <input type="date" {{form.fecha_fin}}
+                        </label>
+                      <div class="cell large-6">
+                        <label>Estado:
+                            {{form.state}}
+                        </label>
+                      </div>
+                      <div class="cell">
+                        <button type="submit" class="success button">Guardar</button>
+                      </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+    

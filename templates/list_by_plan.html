@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+lista de  clientes por planes
+{% endblock title %}
+
+{% block content %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">Clientes por planes</div>
+            <div class="cell">
+                <table>
+                    <thead>
+                      <tr>
+                        <th width="150">Id</th>
+                        <th width="150">Nombres</th>
+                        <th width="150">Tipo de plan</th>
+                        <th width="150">cantidad de clases disponibles</th>
+                        <th width="150">Fecha de inicio</th>
+                        <th width="200">Fecha de fin</th>
+                        <th width="150">Estado</th>
+                        <th width="150">Accion</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {%for e in clientes %}
+                      <tr>
+                        <td>{{e.id}}</td>
+                        <td>{{e.name}}</td>
+                        <td>{{e.last_name}}</td>
+                        <td>{{e.Tipo_plan}}</td>
+                        <td>{{e.Tipo_plan.Cantidad_Clases}}</td>
+                        <td>{{e.fecha_inicio}}</td>
+                        <td>{{e.fecha_fin}}</td>
+                        <td>{{e.state}}</td>
+                        <td><a class="button warning" href="{% url 'clientes_app:cliente_detail' e.id%}">Ver</a></td>
+                    </tr>
+                      {%endfor%}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+    

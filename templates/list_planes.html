@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{% block title %}
+    Lista de Planes
+{% endblock title %}
+    
+
+{% block content %}
+    {% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">Lista de Planes</h1>
+    </div>
+    <div class="cell">
+        <table style="text-align: center;" >
+            <tbody>
+                
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Cantidad de clases</th>
+                </tr>
+                {% for plan in planes %}                     
+                <tr>
+                    <td>{{plan.description}}</td>
+                    <td>$ {{plan.precio}}</td>
+                    <td>{{plan.Cantidad_Clases}}</td>
+                    <td><a class="button warning" href="{% url 'clientes_app:clientes_by_plan' plan.id %}">Ver Clientes</a></td>
+                </tr> 
+                {% endfor %}
+ 
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+    
