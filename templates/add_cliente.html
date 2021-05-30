@@ -10,7 +10,7 @@
     <div class="grid-container">
         <div class="grid-x">
             <h1 class="cell">registrar personas</h1>
-            <form class="cell grid-x grid-margin-x" method="POST"> {% csrf_token %}
+            <form class="cell grid-x callout grid-margin-x" method="POST"> {% csrf_token %}
                 <div class="medium-6 cell">
                     <label>Nombres:
                         {{form.name}}
@@ -26,11 +26,6 @@
                         {{form.Tipo_plan}}
                     </label>
                 </div>
-<!--                <div class="medium-6 cell">
-                        <label>Cantidad de clases:
-                            <input type="text" disabled>{{form.Tipo_plan.Cantidad_Clases}}
-                        </label>
-                    </div>-->
                 <div class="medium-6 cell">
                     <label>Fecha de inicio:
                       <input type="date" {{form.fecha_inicio}}

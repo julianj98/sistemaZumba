@@ -10,11 +10,20 @@
     <li>Nombre: {{cliente.name}}</li>
     <li>Apellido: {{cliente.last_name}}</li>
     <li>Tipo de plan: {{cliente.Tipo_plan}}</li>
-    <li>Cantidad de clases disponibles: {{cliente.Tipo_plan.Cantidad_Clases}}</li>
+    <li>Cantidad de clases disponibles: {{cliente.clases}}</li>
     <li>Fecha de Inicio: {{cliente.fecha_inicio}}</li>
     <li>Fechade fin:{{cliente.fecha_fin}}</li>
-    <li>Estado: {{cliente.state}}</li>
+    <li>Estado:
+      
+      {% if cliente.state %}
+        Activo
+      {% else %}
+       No Activo
+        {% endif %}</li>
   </ul>
+  <form action="{% url 'clientes_app:restar_clase' cliente.id %}" method="POST">{% csrf_token %}
+    <button  class="button primary large"  style="text-align: center;" type="submit">Registrar una clase</button>
+  </form>
 
 </div>
 {% endblock content %}

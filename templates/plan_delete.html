@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Eliminar plan
+{% endblock title %}
+    
+
+{% block content %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Eliminar Plan: {{object.description}}  </h1>
+    
+                <form class="cell" method="POST"> {% csrf_token %}
+                    <div class="callout secondary">
+                        <h5>¿Desea eliminar este plan?</h5>
+                        <button type="submit" class="alert button">Confirmar</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+{% endblock content %}
+    

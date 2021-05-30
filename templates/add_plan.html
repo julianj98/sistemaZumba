@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Registrar Plan
+{% endblock title %}
+    
+
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">registrar Plan</h1>
+            <form class="cell grid-x  callout grid-margin-x" method="POST"> {% csrf_token %}
+                <div class="medium-6 cell">
+                   <label>Nombre:
+                        {{form.description}}
+                    </label el>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Precio:
+                        {{form.precio}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Cantidad de clases:
+                        {{form.Cantidad_Clases}}
+                    </label>
+                </div>                
+                <div class="medium-12 cell">
+                    <button type="submit" class="success button">Guardar</button>
+                </div>
+            </form>    
+        </div>
+    </div>
+{% endblock content %}
+    

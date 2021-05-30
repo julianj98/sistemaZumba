@@ -26,11 +26,15 @@
                     <td>$ {{plan.precio}}</td>
                     <td>{{plan.Cantidad_Clases}}</td>
                     <td><a class="button warning" href="{% url 'clientes_app:clientes_by_plan' plan.id %}">Ver Clientes</a></td>
+                    <td><a class="button primary" href="{% url 'clientes_app:update_plan' plan.id %}">Modificar plan</a></td>
+                    <td><a class="button alert" href="{% url 'clientes_app:delete_plan' plan.id %}">Eliminar plan</a></td>
                 </tr> 
                 {% endfor %}
- 
             </tbody>
         </table>
+        <div style="text-align: center;" >
+            <a class="button success" href="{% url 'clientes_app:add_plan' %}">Añadir Plan</a>
+        </div>
     </div>
 </div>
 {% endblock content %}

@@ -9,13 +9,14 @@ lista de  clientes por planes
 
     <div class="grid-container">
         <div class="grid-x">
-            <div class="cell">Clientes por planes</div>
+            <h1 class="cell">Clientes por planes</h1>
             <div class="cell">
                 <table>
                     <thead>
                       <tr>
                         <th width="150">Id</th>
                         <th width="150">Nombres</th>
+                        <th width="150">Apellidos</th>
                         <th width="150">Tipo de plan</th>
                         <th width="150">cantidad de clases disponibles</th>
                         <th width="150">Fecha de inicio</th>
@@ -31,7 +32,7 @@ lista de  clientes por planes
                         <td>{{e.name}}</td>
                         <td>{{e.last_name}}</td>
                         <td>{{e.Tipo_plan}}</td>
-                        <td>{{e.Tipo_plan.Cantidad_Clases}}</td>
+                        <td>{{e.clases}}</td>
                         <td>{{e.fecha_inicio}}</td>
                         <td>{{e.fecha_fin}}</td>
                         <td>{{e.state}}</td>

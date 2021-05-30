@@ -6,25 +6,25 @@
         <h1 class="cell">Lista de clientes</h1>
         <form class="cell grid-x grid-margin-x" method="GET"> {% csrf_token %}
             <div class="cell large-7 ">
-                <input type="text" placeholder="Buscar cliente" id="kword" name="kword">
+                <input type="text" placeholder="Buscar cliente por nombre" id="kword" name="kword">
             </div>
             <div class="cell large-2">
                 <button type="submit" class="success button">Buscar</button>
             </div>
         </form>
         <div class="cell">
-            <table>
+            <table  style="text-align: center;">
                 <thead>
-                  <tr>
-                    <th width="150">Id</th>
+                  <tr >
+                    <th width="150"  style="text-align: center;">Id</th>
                     <th width="150">Nombres</th>
                     <th width="150">Apellidos</th>
                     <th width="150">Tipo de plan</th>
                     <th width="150">cantidad de clases disponibles</th>
                     <th width="150">Fecha de inicio</th>
                     <th width="200">Fecha de fin</th>
-                    <th width="150">Estado</th>
-                    <th width="150">Accion</th>
+                    <th width="150"  style="text-align: center;" >Estado</th>
+                    <th width="150"  style="text-align: center;">Accion</th>
 
                   </tr>
                 </thead>
@@ -35,11 +35,22 @@
                     <td>{{e.name}}</td>
                     <td>{{e.last_name}}</td>
                     <td>{{e.Tipo_plan}}</td>
-                    <td>{{e.Tipo_plan.Cantidad_Clases}}</td>
+                    <td>{{e.clases}}</td>
                     <td>{{e.fecha_inicio}}</td>
                     <td>{{e.fecha_fin}}</td>
-                    <td>{{e.state}}</td>
-                    <td><a class="button success" href="{% url 'clientes_app:cliente_detail' e.id%}">Registrar clase</a></td>
+                    <td> 
+                    {% if e.state is True %}
+                      Activo
+                    {% else %}
+                     No Activo
+                    {% endif %} </td>
+                    <td>
+                      
+                      {% if e.clases > 0  %}
+                      <a class="button success"
+                      href="{% url 'clientes_app:cliente_detail' e.id%}">Registrar clase</a></td>
+                      {% endif %}
+                        
                 </tr>
                   {%endfor%}
                 </tbody>

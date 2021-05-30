@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editar Plan
+{% endblock title %}
+
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1>Modificar Plan</h1>
+            </div>
+            <div class="cell"> 
+                <form class="grid-x grid-margin-x" method="POST">{% csrf_token %} 
+                    <div class="cell large-6">
+                        <label>Nombre:
+                             {{form.description}}
+                         </label el>
+                     </div>
+                     <div class="medium-6 cell">
+                         <label>Precio:
+                             {{form.precio}}
+                         </label>
+                     </div>
+                     <div class="medium-6 cell">
+                         <label>Cantidad de clases:
+                             {{form.Cantidad_Clases}}
+                         </label>
+                     </div>                
+                      <div class="cell">
+                        <button type="submit" class="success button">Guardar</button>
+                      </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+    

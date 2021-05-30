@@ -24,5 +24,17 @@ urlpatterns = [
     path('clientes_by_plan/<id>', 
          views.ClientesPorPlanListView.as_view(),
          name="clientes_by_plan"),
+    path('add_plan', 
+         views.PlanesCreateView.as_view(),
+         name="add_plan"),
+    path('delete_plan/<pk>', 
+         views.PlanesDeleteView.as_view(),
+         name="delete_plan"),
+    path('update_plan/<pk>', 
+         views.PlanesUpdateView.as_view(),
+         name="update_plan"),
+    path('restar_clase/<int:id>', 
+         views.RegistrarClase,
+         name="restar_clase"),
 
 ]
