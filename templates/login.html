@@ -1,0 +1,19 @@
+{%load static%}
+
+<form class="log-in-form" method="POST"> {% csrf_token %}
+    <h4 class="text-center">Log in with you email account</h4>
+    <label>Email
+      <input type="email" placeholder="somebody@example.com">
+    </label>
+    <label>Password
+      <input type="password" placeholder="Password">
+    </label>
+    <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
+    <p><input type="submit" class="button expanded" value="Log in"></p>
+    <p class="text-center"><a href="#">Forgot your password?</a></p>
+  </form>
+  <script src="{% static 'js/vendor/jquery.js' %}"></script>
+  <script src="{% static 'js/vendor/what-input.js' %}"></script>
+  <script src="{% static 'js/vendor/foundation.min.js' %}"></script>
+  
+  

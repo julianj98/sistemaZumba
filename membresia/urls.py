@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from . import views
 
 app_name="clientes_app"
 urlpatterns = [
-    path('',views.inicioView.as_view(), name="inicio"),
+    path('inicio/',views.inicioView.as_view(), name="inicio"),
     path('clientes_all/',views.pruebaView.as_view(),name="clientes_all"),
     path('clientes_admin/',views.adminClienteView.as_view(),name="clientes_admin"),
     path('ver_cliente/<pk>',views.ClienteDetailView.as_view(),name="cliente_detail"),
@@ -34,7 +36,8 @@ urlpatterns = [
          views.PlanesUpdateView.as_view(),
          name="update_plan"),
     path('restar_clase/<int:id>', 
-         views.RegistrarClase,
+         login_required(views.RegistrarClase),
          name="restar_clase"),
+    
 
 ]

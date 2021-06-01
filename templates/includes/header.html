@@ -1,4 +1,8 @@
-<div class="top-bar">
+<div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+<div class="top-bar"  id="responsive-menu" >
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
         <li class="menu-text">Zumba con Nancy</li>
@@ -8,13 +12,15 @@
         <li>
           <a href="{% url 'clientes_app:clientes_all'%}">Mostrar Clientes</a>
         </li>
+        <li><a href="{%url 'clientes_app:add_cliente'%}" >Registrar nuevo cliente</a></li>
         <li><a href="{% url 'clientes_app:clientes_admin'%}">Administrar clientes</a></li>
         <li><a href="{% url 'clientes_app:planes_list'%}">Planes</a></li>
       </ul>
     </div>
     <div class="top-bar-right">
-      <ul class="menu">
-        <li><a href="{%url 'clientes_app:add_cliente'%}" class="button">Registrar nuevo cliente</a></li>
+      <ul class="menu">	
+        <li class="menu-text">Hola {{user.username}}</li>
+        <a href="{%url 'logout'%}" class="button">Cerrar Sesion</a>
         
       </ul>
     </div>

@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from unipath import Path
+from django.urls import reverse_lazy
 BASE_DIR= Path(__file__).ancestor(3)
 
 # Quick-start development settings - unsuitable for production
@@ -124,3 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=['static']
+
+LOGIN_URL = reverse_lazy('login')
+LOGIN_REDIRECT_URL =reverse_lazy('clientes_app:inicio')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')

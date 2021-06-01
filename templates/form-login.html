@@ -1,0 +1,24 @@
+{%load static%}
+<head>
+  <link rel="stylesheet" href="{% static '/css/foundation.min.css' %}" />
+  <link rel="stylesheet" href="{% static '/css/app.css' %}" />
+  <link rel="shortcut icon" href="/static/img/icono.ico" />
+</head>
+<body style="background-image: url(/static/img/fondo.jpg)">
+  <br />
+  <h1 class="text-center" style="font-weight: bold">
+    Bienvenidos al sistema de Zumba con Nancy
+  </h1>
+  <form class="log-in-form" style="margin: 20 auto" method="post">
+    {% csrf_token %}
+    <h4 class="text-center">Logueate con tu usuario y contraseña</h4>
+    <label for="Usuario">Usuario</label>
+    <input type="text" name="username" placeholder="Usuario" />
+    <label for="pass">Contraseña</label>
+    <input type="password" name="password" placeholder="Contraseña" />
+    <input type="submit" class="button expanded" value="Iniciar" />
+  </form>
+  <script src="{% static 'js/vendor/jquery.js' %}"></script>
+  <script src="{% static 'js/vendor/what-input.js' %}"></script>
+  <script src="{% static 'js/vendor/foundation.min.js' %}"></script>
+</body>

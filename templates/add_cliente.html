@@ -1,16 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% block content %}
+{% include 'includes/header.html' %}
 
 {% block title %}
-    Registrar empleado
+    Registrar cliente
 {% endblock title %}
-    
 
-{% block content %}
-    {% include 'includes/header.html' %}
     <div class="grid-container">
-        <div class="grid-x">
-            <h1 class="cell">registrar personas</h1>
-            <form class="cell grid-x callout grid-margin-x" method="POST"> {% csrf_token %}
+        <div class="grid-x callout">
+            <h1 class="cell">Registrar cliente</h1>
+            <form class="cell grid-x  grid-margin-x" method="POST"> {% csrf_token %}
                 <div class="medium-6 cell">
                     <label>Nombres:
                         {{form.name}}

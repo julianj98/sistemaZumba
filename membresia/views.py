@@ -8,14 +8,16 @@ from django.views.generic import (TemplateView,
                                 UpdateView)
 from .models import Cliente, Planes
 from  .forms import PlanesForm, ClientesForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
-
-class inicioView(TemplateView):
+class inicioView(LoginRequiredMixin, TemplateView):
     template_name = "inicio.html"
 
 
-class pruebaView(ListView):
+class pruebaView(LoginRequiredMixin,ListView):
     template_name = 'clientes_all.html'
     model = Cliente
     paginate_by = 6
@@ -25,12 +27,13 @@ class pruebaView(ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '')
         lista = Cliente.objects.filter(
-            name__icontains=palabra_clave
+            name__icontains=palabra_clave,
+
         )
         return lista
 
 
-class adminClienteView(ListView):
+class adminClienteView(LoginRequiredMixin,ListView):
     template_name = 'clientes_admin.html'
     model = Cliente
     paginate_by = 6
@@ -43,16 +46,16 @@ class adminClienteView(ListView):
         )
         return lista
 
-class ClienteDetailView(DetailView):
+class ClienteDetailView(LoginRequiredMixin,DetailView):
     model = Cliente
     template_name = "detail_cliente.html"
 
 
-class successView(TemplateView):
+class successView(LoginRequiredMixin,TemplateView):
     template_name = "success.html"
 
 
-class ClienteCreateView(CreateView):
+class ClienteCreateView(LoginRequiredMixin,CreateView):
     model = Cliente
     template_name = "add_cliente.html"
     form_class=ClientesForm
@@ -68,12 +71,12 @@ class ClienteCreateView(CreateView):
         return super(ClienteCreateView, self).form_valid(form)
 
 
-class PlanesListView(ListView):
+class PlanesListView(LoginRequiredMixin,ListView):
     model = Planes
     template_name = "planes_all.html"
 
 
-class ClienteUpdateView(UpdateView):
+class ClienteUpdateView(LoginRequiredMixin,UpdateView):
     model = Cliente
     template_name = "update_cliente.html"
     form_class=ClientesForm
@@ -91,19 +94,19 @@ class ClienteUpdateView(UpdateView):
         return super().post(request, *args, **kwargs)
 
 
-class ClienteDeleteView(DeleteView):
+class ClienteDeleteView(LoginRequiredMixin,DeleteView):
     model = Cliente
     template_name = "cliente_delete.html"
     success_url = reverse_lazy('clientes_app:clientes_admin')
 
 
-class PlanesListView(ListView):
+class PlanesListView(LoginRequiredMixin,ListView):
     model = Planes
     template_name = "list_planes.html"
     context_object_name= "planes"
 
 
-class ClientesPorPlanListView(ListView):
+class ClientesPorPlanListView(LoginRequiredMixin,ListView):
     template_name = "list_by_plan.html"
     context_object_name="clientes"
     def get_queryset(self):
@@ -115,7 +118,7 @@ class ClientesPorPlanListView(ListView):
         return lista
 
 
-class PlanesCreateView(CreateView):
+class PlanesCreateView(LoginRequiredMixin,CreateView):
     form_class=PlanesForm
     template_name = "add_plan.html"
     success_url = reverse_lazy('clientes_app:planes_list')
@@ -123,13 +126,13 @@ class PlanesCreateView(CreateView):
 
 
 
-class PlanesDeleteView(DeleteView):
+class PlanesDeleteView(LoginRequiredMixin,DeleteView):
     model = Planes
     template_name = "plan_delete.html"
     success_url = reverse_lazy('clientes_app:planes_list')
 
 
-class PlanesUpdateView(UpdateView):
+class PlanesUpdateView(LoginRequiredMixin,UpdateView):
     model = Planes
     form_class=PlanesForm
     template_name = "update_plan.html"
@@ -158,8 +161,9 @@ def RegistrarClase(request,**kwargs):
         elif clienteActual.clases >0:
             clienteActual.state = True
         clienteActual.save()
-        print( clienteActual.clases)
     return render(request ,'inicio.html',context)
+
+
 
 """def EstadoCliente(request,**kwargs):
     cliente_id = kwargs['id']
