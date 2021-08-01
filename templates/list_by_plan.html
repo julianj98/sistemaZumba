@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-lista de  clientes por planes
+lista de  clientes por planes {{clientes.Tipo_plan.description}} 
 {% endblock title %}
 
 {% block content %}
     {% include 'includes/header.html' %}
-
+<br>
     <div class="grid-container callout">
         <div class="grid-x">
-            <h1 class="cell">Clientes por planes</h1>
+            <h1 class="cell">Clientes por planes {{clientes.Tipo_plan.description}} </h1>
             <div class="cell">
                 <table>
                     <thead>
                       <tr>
-                        <th width="150">Id</th>
+                        <th width="150" style="text-align: center;">DNI</th>
                         <th width="150">Nombres</th>
                         <th width="150">Apellidos</th>
                         <th width="150">Tipo de plan</th>
@@ -28,14 +28,18 @@ lista de  clientes por planes
                     <tbody>
                       {%for e in clientes %}
                       <tr>
-                        <td>{{e.id}}</td>
+                        <td>{{e.dni}}</td>
                         <td>{{e.name}}</td>
                         <td>{{e.last_name}}</td>
                         <td>{{e.Tipo_plan}}</td>
                         <td>{{e.clases}}</td>
                         <td>{{e.fecha_inicio}}</td>
                         <td>{{e.fecha_fin}}</td>
-                        <td>{{e.state}}</td>
+                        <td>  {% if e.state is True %}
+                          Activo
+                        {% else %}
+                         No Activo
+                        {% endif %}</td>
                         <td><a class="button warning" href="{% url 'clientes_app:cliente_detail' e.id%}">Ver</a></td>
                     </tr>
                       {%endfor%}

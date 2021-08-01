@@ -38,6 +38,8 @@ urlpatterns = [
     path('restar_clase/<int:id>', 
          login_required(views.RegistrarClase),
          name="restar_clase"),
-    
+    path('actualizarfecha/<int:id>', 
+         login_required(views.Vencimiento),
+         name="vencimiento"),
 
 ]

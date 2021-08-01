@@ -13,22 +13,27 @@
             </div>
             <div class="cell"> 
                 <form class="grid-x grid-margin-x" method="POST">{% csrf_token %} 
-                    <div class="cell large-6">
+                    <div class="medium-6 cell">
                         <label>Nombres:
                             {{form.name}}
                         </label>
                       </div>
-                      <div class="cell large-6">
+                      <div class="medium-6 cell">
                         <label>Apellidos:
                             {{form.last_name}}
                         </label>
                       </div>
-                      <div class="cell large-6">
+                      <div class="medium-6 cell">
+                        <label>DNI:
+                            {{form.dni}}
+                        </label>
+                      </div>
+                      <div class="medium-6 cell">
                         <label>Tipo de plan:
                             {{form.Tipo_plan}}
                         </label>
                       </div>
-                      <div class="cell large-6">
+                      <div class="medium-6 cell">
                         <label>Fecha de inicio:
                           <input type="date" {{form.fecha_inicio}}
                         </label>
@@ -37,12 +42,13 @@
                         <label>Fecha de fin:
                           <input type="date" {{form.fecha_fin}}
                         </label>
-                      <div class="cell large-6">
+                      </div>
+                      <div class="medium-6 cell">
                         <label>Estado:
                             {{form.state}}
                         </label>
                       </div>
-                      <div class="cell">
+                      <div class="medium-6 cell">
                         <button type="submit" class="success button">Guardar</button>
                       </div>
                 </form>

@@ -1,10 +1,9 @@
-{% extends 'base.html' %}{% block content %}
+{% extends 'base.html' %}
+{%block title%} Registrar cliente {%endblock title%}
+
+{% block content %}
 {% include 'includes/header.html' %}
-
-{% block title %}
-    Registrar cliente
-{% endblock title %}
-
+<br>
     <div class="grid-container">
         <div class="grid-x callout">
             <h1 class="cell">Registrar cliente</h1>
@@ -17,6 +16,11 @@
                 <div class="medium-6 cell">
                     <label>Apellidos:
                         {{form.last_name}}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>DNI:
+                        {{form.dni}}
                     </label>
                 </div>
                 <div class="medium-6 cell">
@@ -35,7 +39,7 @@
                     </label>
                 </div>
                 <div class="medium-6 cell">
-                    <label>Estado:
+                    <label >Estado:
                         {{form.state}}
                     </label>
                 </div>

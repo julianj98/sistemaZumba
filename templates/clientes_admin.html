@@ -1,16 +1,16 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{%block title%} Administrar clientes {%endblock title%}
+
+{% block content %}
 {% include 'includes/header.html' %}
-
-{% block title %}
-    Administrar clientes
-{% endblock title %}
-
+<br>
 <div class="grid-container">
     <div class="grid-x callout">
         <h1 class="cell">Lista de clientes</h1>
         <form class="cell grid-x grid-margin-x" method="GET"> {% csrf_token %}
           <div class="cell large-7 ">
-              <input type="text" placeholder="Buscar cliente por nombre" id="kword" name="kword">
+              <input type="text" placeholder="Buscar cliente por dni" id="kword" name="kword">
           </div>
           <div class="cell large-2">
               <button type="submit" class="primary button">Buscar</button>
@@ -20,8 +20,8 @@
             <table  style="text-align: center;">
                 <thead>
                   <tr>
-                    <th width="150" style="text-align: center;" >Id</th>
-                    <th width="150">Nombres</th>
+                    <th width="150" style="text-align: center;" >DNI</th>
+                    <th width="150" style="text-align: center;">Nombres</th>
                     <th width="150">Apellidos</th>
                     <th width="150">Tipo de plan</th>
                     <th width="150">cantidad de clases disponibles</th>
@@ -35,7 +35,7 @@
                 <tbody>
                   {%for e in Lista_clientes%}
                   <tr>
-                    <td>{{e.id}}</td>
+                    <td>{{e.dni}}</td>
                     <td>{{e.name}}</td>
                     <td>{{e.last_name}}</td>
                     <td>{{e.Tipo_plan}}</td>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import (TemplateView,
                                 ListView,
@@ -10,6 +10,8 @@ from .models import Cliente, Planes
 from  .forms import PlanesForm, ClientesForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from datetime import datetime
+
 
 # Create your views here.
 
@@ -27,7 +29,7 @@ class pruebaView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '')
         lista = Cliente.objects.filter(
-            name__icontains=palabra_clave,
+            dni__icontains=palabra_clave,
 
         )
         return lista
@@ -42,7 +44,7 @@ class adminClienteView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '')
         lista = Cliente.objects.filter(
-            name__icontains=palabra_clave
+            dni__icontains=palabra_clave
         )
         return lista
 
@@ -151,7 +153,8 @@ def RegistrarClase(request,**kwargs):
     context={"nombre":clienteActual.name,
              "apellido": clienteActual.last_name,
              "Clases_actuales":clienteActual.clases,
-             "estado":clienteActual.state}
+             "estado":clienteActual.state,
+             }
     if request.method == 'POST':
         #tipoPlan_id= clienteActual.Tipo_plan.id
         #tipoPlan
@@ -161,8 +164,24 @@ def RegistrarClase(request,**kwargs):
         elif clienteActual.clases >0:
             clienteActual.state = True
         clienteActual.save()
+        return redirect('clientes_app:clientes_all')
     return render(request ,'inicio.html',context)
 
+def Vencimiento(request,**kwargs):
+    cliente_id = kwargs['id']
+    success_url = reverse_lazy('clientes_app:planes_list')
+    clienteActual = Cliente.objects.get(pk=cliente_id)
+    context={
+             "Clases_actuales":clienteActual.clases,
+             "fecha_fin":clienteActual.fecha_fin,
+             "estado":clienteActual.state}
+    if request.method == 'POST':
+        now=datetime.now()
+        if now.date>clienteActual.fecha_fin:
+            clienteActual.clases=0
+        clienteActual.save()
+        return redirect('clientes_app:inicio')
+    return render(request ,'inicio.html',context)
 
 
 """def EstadoCliente(request,**kwargs):

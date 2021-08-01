@@ -15,6 +15,7 @@ class ClientesForm(forms.ModelForm):
         model = Cliente
         fields=('name',
                 'last_name',
+                'dni',
                 'Tipo_plan',
                 'fecha_inicio',
                 'fecha_fin',

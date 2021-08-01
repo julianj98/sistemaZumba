@@ -2,7 +2,9 @@ from django.db import models
 from datetime import  date
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 # Create your models here.
+
 class Planes(models.Model):
     description = models.CharField('Descripción', max_length=70)
     precio= models.PositiveIntegerField('Precio')
@@ -19,6 +21,7 @@ class Planes(models.Model):
 class Cliente(models.Model):
     name= models.CharField(max_length=60,verbose_name="Nombre")
     last_name= models.CharField(max_length=60,verbose_name="Apellido")
+    dni=models.PositiveIntegerField(verbose_name="DNI")
     Tipo_plan = models.ForeignKey(Planes, on_delete=models.CASCADE)
     clases= models.PositiveIntegerField(blank=True,null=True,verbose_name="Clases disponibles")
     #modelChoicefield
@@ -29,11 +32,11 @@ class Cliente(models.Model):
     class Meta:
         verbose_name= "Cliente"
         verbose_name_plural = "Clientes"
-        ordering = ["name"]
+        ordering = ["-state","name",]
         
     def __str__(self):
         return self.name
-""""
+"""
 @receiver(post_save, sender=Cliente)
 def cliente_post_save_receiver(sender,instance, **kwargs):
     cliente_id=instance.id
