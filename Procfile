@@ -1,1 +1,1 @@
-web: gunicorn SistemaZumba.wsgi --log-file -
+web: gunicorn sistemaZumba.wsgi --log-file -
