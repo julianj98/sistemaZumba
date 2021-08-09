@@ -27,6 +27,3 @@ urlpatterns = [
     path('', LoginView.as_view(template_name='form-login.html'), name="login"),
     path('logout/', LogoutView.as_view(), name="logout")
 ] +static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-urlpatterns += patterns("",
-(r"^static/(?P<path>.*)$","django.views.static.serve",{"document_root":settings.STATIC_ROOT,"show_indexes": False}),
-)
