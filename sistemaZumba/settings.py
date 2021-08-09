@@ -27,7 +27,7 @@ BASE_DIR= Path(__file__).ancestor(3)
 SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -133,18 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-#STATIC_URL = '/static/'
-#STATICFILES_DIRS=['static']
-#STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-#STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+#STATICFILES_DIRS=['static']
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL =reverse_lazy('clientes_app:inicio')
