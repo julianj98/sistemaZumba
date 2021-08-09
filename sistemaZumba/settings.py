@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from unipath import Path
@@ -21,12 +23,12 @@ BASE_DIR= Path(__file__).ancestor(3)
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&_z*mhnx2o1ct^w%98=21q5p=h_*^ho+!_8!*rr@&gyef#&949'
+SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'sistemaZumba.urls'
@@ -79,12 +82,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'sistemaZumba',
-        'USER':'julian',
+       'USER':'julian',
         'PASSWORD':'41060109',
         'HOST':'localhost',
         'PORT':'5432',
     }
 }
+
+#DATABASES = {
+#    'default' : dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -125,6 +134,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=['static']
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
 LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL =reverse_lazy('clientes_app:inicio')
