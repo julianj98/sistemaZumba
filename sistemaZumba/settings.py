@@ -78,22 +78,22 @@ WSGI_APPLICATION = 'sistemaZumba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sistemaZumba',
-       'USER':'julian',
-        'PASSWORD':'41060109',
-        'HOST':'localhost',
-        'PORT':'5432',
-    }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'sistemaZumba',
+#       'USER':'julian',
+#        'PASSWORD':'41060109',
+#        'HOST':'localhost',
+#        'PORT':'5432',
+#    }
+# }
 
-#DATABASES = {
-#    'default' : dj_database_url.config(
-#        default=config('DATABASE_URL')
-#    )
-#}
+DATABASES = {
+    'default' : dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
