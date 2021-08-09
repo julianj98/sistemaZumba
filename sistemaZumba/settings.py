@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import dj_database_url
+from decouple import config
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -88,8 +90,6 @@ WSGI_APPLICATION = 'sistemaZumba.wsgi.application'
 #    }
 # }
 
-import dj_database_url
-from decouple import config
 DATABASES = {
     'default' : dj_database_url.config(
         default=config('DATABASE_URL')
