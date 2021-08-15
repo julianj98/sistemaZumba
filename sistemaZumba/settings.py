@@ -27,7 +27,7 @@ BASE_DIR= Path(__file__).ancestor(3)
 SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
+DEBUG=False
 ALLOWED_HOSTS = ['zumbaconnancy.herokuapp.com']
 
 
