@@ -27,7 +27,7 @@ BASE_DIR= Path(__file__).ancestor(3)
 SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=False
+DEBUG=True
 ALLOWED_HOSTS = ['zumbaconnancy.herokuapp.com']
 
 
@@ -78,22 +78,22 @@ WSGI_APPLICATION = 'sistemaZumba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'sistemaZumba',
-#       'USER':'julian',
-#        'PASSWORD':'41060109',
-#        'HOST':'localhost',
-#        'PORT':'5432',
-#    }
-# }
-
 DATABASES = {
-    'default' : dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sistemaZumba',
+       'USER':'julian',
+        'PASSWORD':'41060109',
+        'HOST':'localhost',
+        'PORT':'5432',
+    }
+ }
+
+#DATABASES = {
+#    'default' : dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -133,10 +133,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS=['static']
+STATICFILES_DIRS=['static']
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 #STATICFILES_DIRS=(os.path.join(BASE_DIR, "static"),)
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_URL = reverse_lazy('login')
